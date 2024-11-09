@@ -1,0 +1,10 @@
+langchain
+# langchain-community
+# langchain-chroma
+# langchain-unstructured
+# unstructured[pdf]
+langchain_ollama
+pypdf
+# pymupdf
+chromadb
+pytest

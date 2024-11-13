@@ -2,3 +2,8 @@ chroma/
 .env
 data2
 data/test.pdf
+.envrc
+.ipynb_checkpoints
+chroma_db
+chunks.txt
+

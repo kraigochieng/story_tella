@@ -4,6 +4,10 @@ data2
 data/test.pdf
 .envrc
 .ipynb_checkpoints
-chroma_db
+chroma_db/
+data/images/
+data/extracted_text_from_images.txt
+OCR.py
 chunks.txt
+spacey.py
 

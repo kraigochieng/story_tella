@@ -1,21 +1,12 @@
-from types import new_class
 from PyPDF2 import PdfReader
-from langchain import embeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-from langchain.llms import Ollama
-from langchain.vectorstores import Chroma
-from langchain.embeddings import HuggingFaceEmbeddings
-
-from PyPDF2 import PdfReader
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
+from transformers import AutoTokenizer
 import os
+import re
 
 
 class RAG:
@@ -29,7 +20,7 @@ class RAG:
         self.vectorstore = None
         self.qa_chain = None
         self.raw_text = None
-        self.chunks = None
+        self.chunks = []
         self.setup()
 
     def setup(self):
@@ -55,13 +46,36 @@ class RAG:
         self.book = PdfReader(self.pdf_path)
 
     def text_extraction(self):
-        print("Extracting text from the PDF...")
-        self.raw_text = "".join([page.extract_text() for page in self.book.pages])
+        print("Getting text from the PDF...")
+        # Load text from a .txt file
+        with open(
+            "./data/extracted_text_from_images_batch_two.txt", "r", encoding="utf-8"
+        ) as file:
+            self.raw_text = file.read()
+
+    def preprocess_text(self, text):
+        """
+        Clean and preprocess the input text.
+        """
+        text = re.sub(
+            r"([a-z])([A-Z])", r"\1 \2", text
+        )  # Add space between lowercase and uppercase
+        text = re.sub(r"(\w)([.,;])", r"\1 \2", text)  # Add space before punctuation
+        text = re.sub(r"\s+", " ", text)  # Replace multiple spaces with a single space
+        return text.strip()
 
     def chunking(self):
-        print("Splitting text into chunks...")
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-        self.chunks = text_splitter.split_text(self.raw_text)
+        print("Splitting text into chunks using tokenizer...")
+        tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+        tokens = tokenizer.encode(self.raw_text, add_special_tokens=False)
+        chunk_size = 128  # Adjust this to suit the LLM's context size
+        overlap = 20
+
+        # Tokenize and chunk the text
+        for i in range(0, len(tokens), chunk_size - overlap):
+            chunk_tokens = tokens[i : i + chunk_size]
+            chunk = tokenizer.decode(chunk_tokens)
+            self.chunks.append(self.preprocess_text(chunk))
 
         # Save chunks for reference
         with open("chunks.txt", "w") as f:
@@ -93,13 +107,14 @@ class RAG:
         print("QA chain is ready.")
 
     def querying_loop(self):
+        os.system("cls" if os.name == "nt" else "clear")
         print("You can now query the model. Type 'exit' to stop.")
         while True:
             query = input("What is your query? ").strip()
             if query.lower() == "exit":
                 print("Exiting the querying loop. Goodbye!")
                 break
-            response = self.qa_chain.run(query)
+            response = self.qa_chain.invoke(query)
             print(f"Answer: {response}")
 
 

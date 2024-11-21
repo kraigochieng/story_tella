@@ -16,14 +16,18 @@ class RAG:
         self.pdf_path = pdf_path
         self.db_dir = db_dir
         self.embeddings_model = "all-MiniLM-L6-v2"
-        self.llm_model = "llama3.2"
+        self.llm_model = "llama3.2:1b"
         self.vectorstore = None
         self.qa_chain = None
         self.raw_text = None
         self.chunks = []
+        self.book = None
         self.setup()
 
     def setup(self):
+        # Set up environment variables
+        os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+        os.environ["TORCH_USE_CUDA_DSA"] = "1"
         # Load PDF and process text
         self.load_pdf()
         self.text_extraction()

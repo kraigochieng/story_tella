@@ -10,4 +10,9 @@ data/extracted_text_from_images.txt
 OCR.py
 chunks.txt
 spacey.py
+images_from_pdf/
 
+easyocr_test.py
+inf
+
+__pycache__/

@@ -43,12 +43,12 @@ class RAG:
         os.environ["TORCH_USE_CUDA_DSA"] = "1"
 
         # Load PDF to images
-        # Load images to text
         if not os.path.exists(self.output_images_folder):
             self.convert_pdf_to_images()
         else:
             print(f"{self.output_images_folder} already exists")
 
+        # Load images to text
         if not os.path.exists(self.output_text_folder):
             self.convert_images_to_text()
         else:

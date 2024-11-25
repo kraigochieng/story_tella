@@ -22,6 +22,39 @@ from transformers import AutoTokenizer
 
 
 class RAG:
+    """
+    The RAG class helps process a PDF file so you can ask questions about its content. It works by:
+    - Turning the PDF into images.
+    - Extracting text from those images.
+    - Breaking the text into smaller chunks (chunking).
+    - Storing the chunks in a searchable database (vector database).
+    - Setting up a question-and-answer system to find answers from the database.
+
+    Properties of the Class:
+    - `pdf_path`: The path to the PDF file you want to process.
+    - `db_dir`: The folder where the vector database is saved or will be created.
+    - `embeddings_model`: The model used to create embeddings (numerical representations of text) for the chunks.
+    - `output_images_folder`: The folder where images from the PDF will be saved.
+    - `output_text_folder`: The folder where text extracted from the images will be saved.
+    - `llm_model`: The language model used to generate answers to your queries.
+    - `vectorstore`: Stores the searchable chunks of text.
+    - `qa_chain`: The system that handles the question-and-answer process.
+    - `chunks`: The smaller pieces of text created from the extracted content.
+    - `retriever`: The tool used to find the most relevant chunks from the vector database.
+
+    How it works:
+    - The `setup` function runs everything step by step. It checks if images, text, and the database
+      already exist. If not, it creates them by calling other methods:
+        1. `convert_pdf_to_images`: Turns each page of the PDF into an image.
+        2. `convert_images_to_text`: Extracts text from the images.
+        3. `chunking`: Breaks the extracted text into small, meaningful pieces.
+        4. `setup_vectorstore`: Saves the chunks into a vector database for easy searching.
+        5. `setup_qa_chain`: Sets up the question-answering system to retrieve answers.
+
+    Once everything is set up, the `querying_loop` lets you ask questions, retrieves relevant text,
+    and gives you an answer.
+    """
+
     def __init__(
         self, pdf_path="data/Blossoms of the Savannah.pdf", db_dir="./chroma_db"
     ):

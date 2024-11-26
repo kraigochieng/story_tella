@@ -1,10 +1,10 @@
 # Instructions to run application
 
-1.  Create a Python 3.10 environemnt of
+1.  Create a Python 3.10.15 environemnt of
 2.  Install requirements in requirements.txt
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements2.txt
 ```
 
 3. Run the file `main4.py` (This is the latest)

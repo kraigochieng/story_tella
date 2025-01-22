@@ -128,10 +128,34 @@
   </style>
   <script>
     let chapnumber = 0;
+    function change(value) {
+      localStorage.setItem('chapnumber', value);
 
-    function change(value){
-      chapnumber = value
+      document.getElementById('summaryurl').href = `http://127.0.0.1:5000/menu/${value}/summary`;
+      document.getElementById('themeurl').href = `http://127.0.0.1:5000/menu/${value}/themes`;
+      document.getElementById('charurl').href = `http://127.0.0.1:5000/menu/${value}/characters`;
+      document.getElementById('senturl').href = `http://127.0.0.1:5000/menu/${value}/sentiments`;
     }
+    document.addEventListener('DOMContentLoaded', function () {
+      let storedChap = localStorage.getItem('chapnumber');
+
+      if (storedChap) {
+        document.getElementById('summaryurl').href = `http://127.0.0.1:5000/menu/${storedChap}/summary`;
+        document.getElementById('themeurl').href = `http://127.0.0.1:5000/menu/${storedChap}/themes`;
+        document.getElementById('charurl').href = `http://127.0.0.1:5000/menu/${storedChap}/characters`;
+        document.getElementById('senturl').href = `http://127.0.0.1:5000/menu/${storedChap}/sentiments`;
+      }
+    });
+
+    function navigate(section) {
+      let chapnumber = localStorage.getItem('chapnumber');
+      if (!chapnumber) {
+        alert('Please select a chapter first.');
+        return;
+      }
+      window.location.href = `http://127.0.0.1:5000/menu/${chapnumber}/${section}`;
+    }
+
   </script>
 </head>
 
@@ -146,61 +170,64 @@
         <a href="http://127.0.0.1:5000/menu/1" onclick="change(1)">
           <div class="chapternos">1</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/2" onclick="change(2)">
+        <a href="http://127.0.0.1:5000/menu/2" onclick="change(2);">
           <div class="chapternos">2</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/3" onclick="change(3)">
+        <a href="http://127.0.0.1:5000/menu/3" onclick="change(3);">
           <div class="chapternos">3</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/4" onclick="change(4)">
+        <a href="http://127.0.0.1:5000/menu/4" onclick="change(4);">
           <div class="chapternos">4</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/5" onclick="change(5)">
+        <a href="http://127.0.0.1:5000/menu/5" onclick="change(5);">
           <div class="chapternos">5</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/6" onclick="change(6)">
+        <a href="http://127.0.0.1:5000/menu/6" onclick="change(6);">
           <div class="chapternos">6</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/7" onclick="change(7)">
+        <a href="http://127.0.0.1:5000/menu/7" onclick="change(7);">
           <div class="chapternos">7</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/8" onclick="change(8)">
+        <a href="http://127.0.0.1:5000/menu/8" onclick="change(8);">
           <div class="chapternos">8</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/9" onclick="change(9)">
+        <a href="http://127.0.0.1:5000/menu/9" onclick="change(9);">
           <div class="chapternos">9</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/10" onclick="change(10)">
+        <a href="http://127.0.0.1:5000/menu/10" onclick="change(10);">
           <div class="chapternos">10</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/11" onclick="change(11)">
+        <a href="http://127.0.0.1:5000/menu/11" onclick="change(11);">
           <div class="chapternos">11</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/12" onclick="change(12)">
+        <a href="http://127.0.0.1:5000/menu/12" onclick="change(12);">
           <div class="chapternos">12</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/13" onclick="change(13)">
+        <a href="http://127.0.0.1:5000/menu/13" onclick="change(13);">
           <div class="chapternos">13</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/14" onclick="change(14)">
+        <a href="http://127.0.0.1:5000/menu/14" onclick="change(14);">
           <div class="chapternos">14</div>
         </a>
-        <a href="http://127.0.0.1:5000/menu/15" onclick="change(15)">
+        <a href="http://127.0.0.1:5000/menu/15" onclick="change(15);">
           <div class="chapternos">15</div>
         </a>
       </div>
       <div>
         <div id="rhs">
-          <script>
-            let summaryurl = `http://127.0.0.1:5000/${chapnumber}/`
-            let themeurl = `http://127.0.0.1:5000/${chapnumber}/`
-            let characterurl = `http://127.0.0.1:5000/${chapnumber}/`
-            let sentimentsurl = `http://127.0.0.1:5000/${chapnumber}/`
-          </script>
-          <a id="summaryurl" href="#"><div>Summary</div></a>
-          <div>Themes</div>
-          <div>Characters</div>
-          <div>Sentiments</div>
+          <a href="#" id="summaryurl" onclick="navigate('summary'); return false;">
+            <div>Summary</div>
+          </a>
+          <a href="#" id="themeurl" onclick="navigate('themes'); return false;">
+            <div>Themes</div>
+          </a>
+          <a href="#" id="charurl" onclick="navigate('characters'); return false;">
+            <div>Characters</div>
+          </a>
+          <a href="#" id="senturl" onclick="navigate('sentiments'); return false;">
+            <div>Sentiments</div>
+          </a>
+
         </div>
         {% if content %}
         <p id="response">{{content}}!</p>

@@ -8,11 +8,17 @@
 pip install -r requirements3.txt
 ```
 
-4. Run the file `main4.py` (This is the latest)
+4. export the api keys into your terminal or setup an env file. (In whatsapp)
+
+
+5. Run the file `server/app.py` (This is the latest)
 
 ```bash
-python main4.py
+python server/app.py
 ```
+
+6. Navigate to http://127.0.0.1:5000/menu/1 to open the menu page.
+
 
 # Description of what is happening in the `main4.py` file
 

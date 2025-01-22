@@ -229,11 +229,7 @@
           </a>
 
         </div>
-        {% if content %}
-        <p id="response">{{content}}!</p>
-        {% else %}
-        <p id="response">{{content}}!</p>
-        {% endif %}
+        {% block response %}{% endblock %}
       </div>
     </div>
   </div>

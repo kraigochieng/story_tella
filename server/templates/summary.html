@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block response %}
+    <ul>
+        {% for paragraph in paragraphs %}
+            <li>
+                <h3>Original</h3>
+                <p>{{ paragraph.original }}</p>
+                <h3>Summary</h3>
+                <p>{{ paragraph.summary }} </p>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+
+    <h2>Full Summary</h2>
+    <p>{{ final_summary }}</p>
+{% endblock %}

@@ -5,7 +5,7 @@
 3.  Install requirements in requirements.txt
 
 ```bash
-pip install -r requirements2.txt
+pip install -r requirements3.txt
 ```
 
 4. Run the file `main4.py` (This is the latest)

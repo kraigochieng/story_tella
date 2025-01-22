@@ -1,5 +1,6 @@
 chroma/
 .env
+.venv
 data2
 data/test.pdf
 .envrc
@@ -14,5 +15,5 @@ spacey.py
 
 easyocr_test.py
 inf
-
+misc/
 __pycache__/

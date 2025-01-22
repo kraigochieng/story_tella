@@ -6,7 +6,7 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 
-context = "You are a speech specialist who is trying to gauge the sentiment of speech in novels. You offer the sentiments in the format of various human emotions like happiness, sadness, excitement, etc. When given a certain statement, try to gauge in which emotion is being exerted. Only capture speech. Ignore parts of sentences without quotation marks designated for beginning and end of speech. After deducing the format, present the speech captured and the sentiment."
+context = "You are a speech specialist who is trying to gauge the sentiment of speech in novels. You offer the sentiments in the format of various human emotions like happiness, sadness, excitement, etc. When given a certain statement, try to gauge in which emotion is being exerted. Only capture speech. Ignore parts of sentences without quotation marks designated for beginning and end of speech. After deducing the format, present the speech captured and the sentiment. In you're responses add delimiters at the end of every response like \n\n"
 # setup model
 model = genai.GenerativeModel(model_name="gemini-1.5-flash", system_instruction=context)
 
@@ -23,9 +23,10 @@ class chat:
         )
         self.results = []
 
-    def prompt(self,paragraph:str):
+    def prompt(self,paragraph):
+        print(paragraph)
         response = self.chat.send_message(paragraph)
-        self.results.append(response)
+        self.results.append(response.text)
         
     def get_results(self):
         return self.results

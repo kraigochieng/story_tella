@@ -40,13 +40,18 @@ def register_blueprints(app):
     app.register_blueprint(Summarization,url_prefix='/Summarization')
 
     """
+
+    from server.menu import menu
+
+    app.register_blueprint(menu, url_prefix="/menu")
+
     from server.character import character
 
     app.register_blueprint(character, url_prefix="/character")
 
-    from server.semantics import semantics
+    from server.sentiment import sentiment
 
-    app.register_blueprint(semantics, url_prefix="/semantics")
+    app.register_blueprint(sentiment, url_prefix="/semantics")
 
     from server.summarization import summary
 

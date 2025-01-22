@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORYTELLA - Futuristic</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+    }
+
+    #frame {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      width: 95vw;
+      height: 95vh;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+
+    #storytella {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #0ff;
+      text-shadow: 0 0 20px #0ff;
+    }
+
+    #organization {
+      margin: 40px 0;
+      display: flex;
+      justify-content: space-evenly;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 60px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    #chapters {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .chapternos {
+      height: 150px;
+      width: 200px;
+      line-height: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      border: 2px solid rgba(0, 255, 255, 0.5);
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .chapternos:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    }
+
+    #rhs {
+      display: flex;
+      justify-content: space-around;
+      width: 60vw;
+      height: 120px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    }
+
+    #rhs div {
+      flex: 1;
+      margin: 0 10px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #rhs div:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+    }
+
+    #response {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 3px;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+      padding: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #000428, #004e92);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+  </style>
+  <script>
+    let chapnumber = 0;
+
+    function change(value){
+      chapnumber = value
+    }
+  </script>
+</head>
+
+<body>
+  <div id="frame">
+    <div id="storytella">
+      <h1>STORYTELLA</h1>
+    </div>
+    <div id="organization">
+      <div id="chapters">
+        <div class="chapternos">Chapters</div>
+        <a href="http://127.0.0.1:5000/menu/1" onclick="change(1)">
+          <div class="chapternos">1</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/2" onclick="change(2)">
+          <div class="chapternos">2</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/3" onclick="change(3)">
+          <div class="chapternos">3</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/4" onclick="change(4)">
+          <div class="chapternos">4</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/5" onclick="change(5)">
+          <div class="chapternos">5</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/6" onclick="change(6)">
+          <div class="chapternos">6</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/7" onclick="change(7)">
+          <div class="chapternos">7</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/8" onclick="change(8)">
+          <div class="chapternos">8</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/9" onclick="change(9)">
+          <div class="chapternos">9</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/10" onclick="change(10)">
+          <div class="chapternos">10</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/11" onclick="change(11)">
+          <div class="chapternos">11</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/12" onclick="change(12)">
+          <div class="chapternos">12</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/13" onclick="change(13)">
+          <div class="chapternos">13</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/14" onclick="change(14)">
+          <div class="chapternos">14</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/15" onclick="change(15)">
+          <div class="chapternos">15</div>
+        </a>
+      </div>
+      <div>
+        <div id="rhs">
+          <script>
+            let summaryurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let themeurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let characterurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let sentimentsurl = `http://127.0.0.1:5000/${chapnumber}/`
+          </script>
+          <a id="summaryurl" href="#"><div>Summary</div></a>
+          <div>Themes</div>
+          <div>Characters</div>
+          <div>Sentiments</div>
+        </div>
+        {% if content %}
+        <p id="response">{{content}}!</p>
+        {% else %}
+        <p id="response">{{content}}!</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

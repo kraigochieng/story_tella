@@ -63,7 +63,7 @@
     }
 
     .chapternos {
-      height: 100px;
+      height: 150px;
       width: 200px;
       line-height: 100px;
       font-size: 24px;
@@ -115,7 +115,7 @@
     #response {
       font-size: 28px;
       font-weight: bold;
-      margin-top: 30px;
+      margin-top: 3px;
       color: #fff;
       text-align: center;
       line-height: 100px;
@@ -125,8 +125,14 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
     }
-
   </style>
+  <script>
+    let chapnumber = 0;
+
+    function change(value){
+      chapnumber = value
+    }
+  </script>
 </head>
 
 <body>
@@ -137,18 +143,70 @@
     <div id="organization">
       <div id="chapters">
         <div class="chapternos">Chapters</div>
-        <div class="chapternos">1</div>
-        <div class="chapternos">2</div>
-        <div class="chapternos">3</div>
+        <a href="http://127.0.0.1:5000/menu/1" onclick="change(1)">
+          <div class="chapternos">1</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/2" onclick="change(2)">
+          <div class="chapternos">2</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/3" onclick="change(3)">
+          <div class="chapternos">3</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/4" onclick="change(4)">
+          <div class="chapternos">4</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/5" onclick="change(5)">
+          <div class="chapternos">5</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/6" onclick="change(6)">
+          <div class="chapternos">6</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/7" onclick="change(7)">
+          <div class="chapternos">7</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/8" onclick="change(8)">
+          <div class="chapternos">8</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/9" onclick="change(9)">
+          <div class="chapternos">9</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/10" onclick="change(10)">
+          <div class="chapternos">10</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/11" onclick="change(11)">
+          <div class="chapternos">11</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/12" onclick="change(12)">
+          <div class="chapternos">12</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/13" onclick="change(13)">
+          <div class="chapternos">13</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/14" onclick="change(14)">
+          <div class="chapternos">14</div>
+        </a>
+        <a href="http://127.0.0.1:5000/menu/15" onclick="change(15)">
+          <div class="chapternos">15</div>
+        </a>
       </div>
       <div>
         <div id="rhs">
-          <div>Summary</div>
+          <script>
+            let summaryurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let themeurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let characterurl = `http://127.0.0.1:5000/${chapnumber}/`
+            let sentimentsurl = `http://127.0.0.1:5000/${chapnumber}/`
+          </script>
+          <a id="summaryurl" href="#"><div>Summary</div></a>
           <div>Themes</div>
           <div>Characters</div>
           <div>Sentiments</div>
         </div>
-        <p id="response">CONTENT</p>
+        {% if content %}
+        <p id="response">{{content}}!</p>
+        {% else %}
+        <p id="response">{{content}}!</p>
+        {% endif %}
       </div>
     </div>
   </div>

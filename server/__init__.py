@@ -1,4 +1,4 @@
-from flask import Flask, blueprints
+from flask import Flask, blueprints, request
 
 
 class Config:
@@ -27,6 +27,12 @@ def create_app():
     app.config["SECRET_KEY"] = secret
 
     register_blueprints(app)
+    
+    @app.route("/",methods=["POST"])
+    def main():
+        if request.method == "POST":
+            data = request.form['data']
+        return {"data":f"{data}"}
 
     return app
 
@@ -48,9 +54,9 @@ def register_blueprints(app):
 
     app.register_blueprint(character, url_prefix="/character")
 
-    from server.sentiment import semantics
+    from server.sentiment import sentiment
 
-    app.register_blueprint(semantics, url_prefix="/sentiments")
+    app.register_blueprint(sentiment, url_prefix="/sentiments")
 
     from server.summarization import summary
 

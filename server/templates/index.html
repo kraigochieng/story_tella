@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORYTELLA - Futuristic</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+    }
+
+    #frame {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      width: 95vw;
+      height: 95vh;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+
+    #storytella {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #0ff;
+      text-shadow: 0 0 20px #0ff;
+    }
+
+    #organization {
+      margin: 40px 0;
+      display: flex;
+      justify-content: space-evenly;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 60px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    #chapters {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .chapternos {
+      height: 100px;
+      width: 200px;
+      line-height: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      border: 2px solid rgba(0, 255, 255, 0.5);
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .chapternos:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    }
+
+    #rhs {
+      display: flex;
+      justify-content: space-around;
+      width: 60vw;
+      height: 120px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    }
+
+    #rhs div {
+      flex: 1;
+      margin: 0 10px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #rhs div:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+    }
+
+    #response {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 30px;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+      padding: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #000428, #004e92);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="frame">
+    <div id="storytella">
+      <h1>STORYTELLA</h1>
+    </div>
+    <div id="organization">
+      <div id="chapters">
+        <div class="chapternos">Chapters</div>
+        <div class="chapternos">1</div>
+        <div class="chapternos">2</div>
+        <div class="chapternos">3</div>
+      </div>
+      <div>
+        <div id="rhs">
+          <div>Summary</div>
+          <div>Themes</div>
+          <div>Characters</div>
+          <div>Sentiments</div>
+        </div>
+        <p id="response">CONTENT</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

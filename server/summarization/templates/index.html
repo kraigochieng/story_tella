@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarization</title>
+</head>
+<body>
+    <h1>Summarization</h1>
+
+    <h2>Paragraphs for Chapter {{ chapter_number }}</h2>
+    <ul>
+        {% for paragraph in paragraphs %}
+            <li>
+                <h3>Original</h3>
+                <p>{{ paragraph.original }}</p>
+                <h3>Summary</h3>
+                <p>{{ paragraph.summary }} </p>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+
+    <h2>Full Summary</h2>
+    <p>{{ final_summary }}</p>
+
+    
+</body>
+</html>

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from server.menu.obtainchapters import obtainchapterarray
+from server.summarization.routes import summary_api
 import requests
 import re
 
@@ -11,17 +12,18 @@ chapter = None
 
 @menu.route("/<chapter>")
 @menu.route("/<chapter>/summary", methods=["GET"])
-def main(chapter=None):
-    summary = ""
-    chapnos= chapter
-    chapter = chapters[int(chapter)-1]
-    try:
-        summary = requests.post("http://127.0.0.1:5000/",{"data":f"{chapter}"})
-        summary = summary.text
-    except Exception as e:
-        summary = f"Error fetching sentiments: {str(e)}"
+async def main(chapter=None):
+    if chapter is None:
+        chapter = 1
 
-    return render_template("index.html", content=summary,chapter = chapnos)
+    data = await summary_api(int(chapter))
+    return render_template(
+        "summary.html",
+        chapter_number=int(chapter),
+        final_summary=data["final_summary"],
+        paragraphs=data["paragraphs"],
+    )
+
 
 @menu.route("/<chapter>/themes",methods=["GET"])
 def chapter_themes(chapter=None):

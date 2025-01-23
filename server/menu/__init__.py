@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from server.menu.obtainchapters import obtainchapterarray
 import requests
+import re
 
 menu = Blueprint("menu", __name__)
 
@@ -59,9 +60,26 @@ def chapter_sentiments(chapter=None):
         # sentiments = sentiments.text
         sentiments = sentiments.json().get("data", "No sentiment data available.")
         
+        sentiments = clean_response(sentiments)
+        
         
 
     except Exception as e:
        sentiments = f"Error fetching sentiments: {str(e)}"
         
     return render_template("sentiment.html", content=sentiments,chapter = chapnos)
+
+
+
+
+
+def clean_response(response_data):
+    # Replace newline sequences with a space
+    cleaned_text = response_data.replace("\\n\\n\\n***\\n", "\n\n")
+    
+    cleaned_text = cleaned_text.replace("\n\n***\n", "\n\n")
+
+    # Remove square brackets []
+    cleaned_text = re.sub(r"[\[\]]", "", cleaned_text)
+
+    return cleaned_text.strip()
